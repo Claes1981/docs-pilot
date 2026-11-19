@@ -22,11 +22,11 @@ How it works:
 1. **Ingestion (Python):** read the docs → chunk (300–800 tokens, with overlap) → embed (Llama.cpp) → store in a local vector DB (sqlite-vec).
 2. **API (FastAPI):** `POST /ask` → retrieve the top-5 chunks → the local model answers **only from that context** → the answer returns its sources.
 3. **UI:** a minimal chat page.
-4. **Deployment:** Docker Compose for one-command local start; IaC (Bicep) for a cloud deployment I can `xxx` → `yyy` in the demo.
+4. **Provisioning and Deployment:** Docker Compose for one-command local start; IaC (Bicep) for a cloud deployment I can `az deployment sub delete -n docspilot` → `az deployment sub create -n docspilot -l westeurope -f main.bicep` in the demo.
 
 Where the new thing is used: steps 1–2 are the RAG core (chunking, embeddings, vector search, retrieval evaluation) — that is what gets graded.
 
-Building on what I already have: Python, Docker, and GitHub. The teacher approved this direction on 13 November (see Changes below).
+Building on what I already have: Python, Docker, and GitHub. The Supervisor approved this direction on 13 November (see Changes below).
 
 **The smallest version that counts as done:**
 1. Ask a question in the chat UI and get an answer that cites the document(s) it came from.
@@ -39,18 +39,18 @@ Building on what I already have: Python, Docker, and GitHub. The teacher approve
 
 | Course week | What I do |
 |---|---|
-| 1 | Plan approved, repo set up, doc corpus chosen; learn RAG basics (chunking, embeddings, vector search); Docker Compose skeleton |
-| 2 | Ingestion: chunking with overlap, embeddings via Llama.cpp, vector DB, top-5 retrieval |
-| 3 | `POST /ask` API + local LLM answers with citations |
-| 4 | Chat UI; evaluation set (20–30 questions) with retrieval hit-rate and citation checks |
-| 5 | Docker images, IaC, optional cloud deployment, README + docs |
-| 6 | If time: retrieval experiment (chunk sizes 400/800/1200, vector vs keyword vs hybrid). Polish, logbook catch-up |
+| 1 | (Done) Explored ideas with Perplexity.ai; Supervisor approved the DocsPilot direction 13 Nov |
+| 2 | Plan approved 19 Nov; repo set up, doc corpus chosen; learn RAG basics (chunking, embeddings, vector search); Docker Compose skeleton |
+| 3 | Ingestion: chunking with overlap, embeddings via Llama.cpp, vector DB, top-5 retrieval |
+| 4 | `POST /ask` API + local LLM answers with citations |
+| 5 | Chat UI; evaluation set (20–30 questions) with retrieval hit-rate and citation checks |
+| 6 | Docker images, IaC, optional cloud deployment, README + docs; if time: retrieval experiment (chunk sizes 400/800/1200, vector vs keyword vs hybrid), or implement the provisioning and deployment in Terraform |
 | Break | |
 | 7 | The report, final submission (14 Jan) |
 | 8 | Presentation, demo + opposition (19/21 Jan) |
 
-**The biggest risk, and what I do then:** The LIA-searching takes too much time. Then move work to the holidays
- If a piece is harder than expected, I build the smallest version first.
+**The biggest risk, and what I do then:** The LIA-searching takes too much time. Then move work to the holidays.
+If a piece is harder than expected, I build the smallest version first.
 
 ---
 
@@ -58,4 +58,6 @@ Building on what I already have: Python, Docker, and GitHub. The teacher approve
 
 | Date | What I changed | Why |
 |---|---|---|
-| 2026-11-19 | Filled in the plan: DocsPilot (local-first RAG assistant) | Teacher approved the direction 13 Nov; plan due 19 Nov |
+| 2026-11-19 | Filled in the plan: DocsPilot (local-first RAG assistant) | Supervisor approved the direction 13 Nov; plan due 19 Nov |
+| 2026-11-19 | Shifted the week-by-week plan one week: week 1 was idea exploration and direction approval; the build now runs weeks 2–6 | Week 1 was spent on the Perplexity.ai conversation and getting the direction approved; the plan was approved 19 Nov, in week 2 |
+| 2026-11-19 | Added Terraform as an extra option for the deployment, if there is time towards the end of the project | Perplexity.ai had suggested Terraform; Supervisor encouraged me in a voice meeting to try it if there is time |
