@@ -1,0 +1,39 @@
+# --- Private / local working files ---
+# Personal LLM Wiki (notes, captured conversations, observations) — keep private
+.llm-wiki/
+# Commit message drafts
+dev/
+# Environment variables
+.env
+.env.*
+
+# --- Python (FastAPI) ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Llama.cpp / models ---
+# GGUF model files are large binaries; download them, don't commit them
+*.gguf
+build/
+
+# --- Vector database / data ---
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# --- Bicep / Azure ---
+.bicep/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
